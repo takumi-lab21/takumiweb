@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="post">
+    <div class="row">
+        <div class="col">
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <span class="text-gray">published: {{ post.published_date }}</span>
+        </div>
+    </div>
+    <div class="gray-box">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                {% if post.image %}
+                <img class="post_image" src={{post.image.url}} width="90%">
+                {% endif %}
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div>
+            <p class="text-block">{{ post.text|linebreaksbr }}</p>
+        </div>
+    </div>
+{% endblock %}

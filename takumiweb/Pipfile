@@ -1,0 +1,17 @@
+[scripts]
+start = "python manage.py runserver"
+
+
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "~=2.2.4"
+pillow = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"

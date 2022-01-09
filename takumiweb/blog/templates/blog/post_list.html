@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+{% comment %} 
+base.htmlのblockの部分のみを追加実装するような形
+{% endcomment %}
+
+{% block content %}
+
+    {% for post in posts %}
+        <div class="post">
+            <div class="row">
+                <div class="col">
+                    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                    <span class="text-gray">published: {{ post.published_date }}</span>
+                </div>
+            </div>
+            <div class="row gray-box" style="padding-left: 0px;">
+                <div class="col" style="max-width: 80%;">
+                    <p class="text-block">{{ post.text|linebreaksbr }}</p>
+                </div>
+                <div class="col-auto post_image">
+                    {% if post.image %}
+                    <img  src={{post.image.url}} width="100px">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
