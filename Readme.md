@@ -17,6 +17,7 @@ pipenv shell
 python manage.py migrate
 
 # スーパーユーザーの作成
+python manage.py createsuperuser
 ```
 
 ## サーバーの起動
