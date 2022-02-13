@@ -18,12 +18,20 @@ from django.urls import path, include
 from django.contrib.staticfiles.urls import static
 from django.conf import settings
 from django.contrib.auth import views
+from django.shortcuts import redirect
+
+def redirect_to_blog(request):
+    return redirect('/blog')
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/login/', views.LoginView.as_view(template_name="registration/login.html"), name='login'),
     path('accounts/logout/', views.LogoutView.as_view(next_page='/'), name='logout'),
-    path('', include('blog.urls')), # blog.urlsで定義されたルーティングを利用する。
+    path('', redirect_to_blog),
+    path('blog', include('apps.blog.urls'), name="blog"), # blog.urlsで定義されたルーティングを利用する。
+    path('playlot', include('apps.playlot.urls'), name="playlot"), 
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # メディアを静的に表示できるようにする。

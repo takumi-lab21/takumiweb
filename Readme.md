@@ -8,8 +8,23 @@ Djangoを試す。
 
 ## インストール
 ```bash
+sudo apt install sqlite3
+
 PIPENV_VENV_IN_PROJECT=true pipenv install
+
+# マイグレーションの実行
+pipenv shell
+python manage.py migrate
+
+# スーパーユーザーの作成
+python manage.py createsuperuser
 ```
+
+## サーバーの起動
+```bash
+pipenv run start
+```
+
 
 ## 手順
 
